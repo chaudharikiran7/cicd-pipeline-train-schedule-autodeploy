@@ -34,14 +34,7 @@ pipeline {
         }
         
         stage('CanaryDeploy') {
-            stage('SSH Into k8s Server') {
-            def remote = [:]
-            remote.name = 'master'
-            remote.host = '34.125.132.57'
-            remote.user = 'root'
-            remote.password = 'root@123'
-            remote.allowAnyHosts = true
-        }
+           
             environment { 
                 CANARY_REPLICAS = 1
             }
