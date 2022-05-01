@@ -14,7 +14,6 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-          
                 script {
                     app = docker.build(DOCKER_IMAGE_NAME)
                     app.inside {
@@ -26,7 +25,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'chaudharikiran7') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'chaudharikiran7/kirranchaudhari') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
